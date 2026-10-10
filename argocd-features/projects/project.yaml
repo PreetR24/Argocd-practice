@@ -6,7 +6,7 @@ metadata:
 spec:
   description: Project for frontend team apps   
   sourceRepos:                 
-    - https://github.com/PreetR24/argocd-demos.git
+    - https://github.com/PreetR24/Argocd-practice.git
   destinations:                
     - namespace: frontend
       server: https://argocd-cluster-control-plane:6443
