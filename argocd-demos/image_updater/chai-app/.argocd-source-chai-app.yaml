@@ -1,3 +1,0 @@
-kustomize:
-  images:
-  - preetrupapara/chai-devops:v1.0.0
