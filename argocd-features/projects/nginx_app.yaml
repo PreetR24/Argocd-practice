@@ -10,7 +10,7 @@ spec:
     targetRevision: main     
     path: argocd-demos/ui_approach/nginx  
   destination:
-    server: https://172.19.0.3:6443
+    server: https://argocd-cluster-control-plane:6443
     namespace: frontend          
   syncPolicy:                    
     automated:                   

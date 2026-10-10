@@ -9,7 +9,7 @@ spec:
     - https://github.com/PreetR24/argocd-demos.git
   destinations:                
     - namespace: frontend
-      server: https://172.19.0.3:6443
+      server: https://argocd-cluster-control-plane:6443
   clusterResourceWhitelist:    # Which cluster-wide resources are allowed (e.g., CRDs)
     - group: "*"               
       kind: "*"                

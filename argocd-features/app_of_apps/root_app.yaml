@@ -10,7 +10,7 @@ spec:
     targetRevision: main        # Git branch to track
     path: argocd-demos/app_of_apps/apps   # Path where child app manifests are stored
   destination:
-    server: https://172.19.0.3:6443  # Deploying inside the same cluster
+    server: https://argocd-cluster-control-plane:6443  # Deploying inside the same cluster
     namespace: argocd             # Applications (CRDs) must live in argocd namespace
   syncPolicy:
     automated:
