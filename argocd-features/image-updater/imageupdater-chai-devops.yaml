@@ -1,0 +1,26 @@
+apiVersion: argocd-image-updater.argoproj.io/v1alpha1
+kind: ImageUpdater
+
+metadata:
+  name: chai-devops-updater
+  namespace: argocd
+
+spec:
+  applicationRefs:
+    - namePattern: "chai-app"
+      images:
+        - alias: "chai-devops"
+          imageName: "preetrupapara/chai-devops:~1.0"
+          commonUpdateSettings:
+            updateStrategy: semver
+            forceUpdate: true
+          manifestTargets:
+            kustomize:
+              name: "preetrupapara/chai-devops"
+
+  writeBackConfig:
+    method: "git:secret:argocd/argocd-image-updater-git-creds"
+    gitConfig:
+      repository: "https://github.com/PreetR24/Argocd-practice.git"
+      branch: "main"
+      writeBackTarget: "kustomization"
