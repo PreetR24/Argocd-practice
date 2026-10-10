@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1 
+kind: Application               
+metadata:
+  name: chai-app                
+  namespace: argocd             
+  annotations:
+
+    # Maps the image alias 'chai-app' to your DockerHub image
+    # Assign alias 'chai-app' to your image
+    argocd-image-updater.argoproj.io/image-list: chai-app=preetrupapara/chai-devops 
+
+    # Configures image updater to write changes back to Git using provided secret
+    # Use git write-back
+    argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/argocd-image-updater-git-creds
+
+    # Update strategy for chai-app image
+    argocd-image-updater.argoproj.io/chai-app.update-strategy: semver # Uses semantic versioning for image updates
+
+spec:
+  project: default             
+  source:
+    repoURL: https://github.com/PreetR24/Argocd-practice.git 
+    targetRevision: main        
+    path: argocd-demos/image_updater/chai-app 
+  destination:
+    server: https://argocd-cluster-control-plane:6443
+    namespace: default        
+  syncPolicy:
+    automated:                  
+      prune: true               
+      selfHeal: true            
+
+# Brief: This ArgoCD Application manifest configures automated deployment and image updates for the 'chai-app'
+# using ArgoCD Image Updater, with changes written back to Git.
