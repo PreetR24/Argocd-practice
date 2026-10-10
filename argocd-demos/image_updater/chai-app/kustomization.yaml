@@ -13,4 +13,4 @@ resources:
 images:
   - name: preetrupapara/chai-devops
     newName: preetrupapara/chai-devops
-    newTag: v1.0.0
+    newTag: v1.0.1
