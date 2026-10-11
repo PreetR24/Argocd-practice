@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1           
+kind: Application                         
+metadata:
+  name: online-shop-app                   
+  namespace: argocd                       
+spec:
+  project: default                        
+  source:
+    repoURL: https://github.com/PreetR24/Argocd-practice.git 
+    targetRevision: main                  
+    path: argocd-demos/monitoring/online_shop          
+  destination:
+    server: https://argocd-cluster-control-plane:6443
+    namespace: default                  
+  syncPolicy:
+    automated:                         
+      prune: true                      
+      selfHeal: true                   
